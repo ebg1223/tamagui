@@ -48,10 +48,11 @@ function DialogDemo() {
           enterStyle={{ x: 0, y: -20, opacity: 0, scale: 0.9 }}
           exitStyle={{ x: 0, y: 10, opacity: 0, scale: 0.95 }}
           maxHeight={'90%'}
+          f={1}
           space
         >
           <Dialog.Title>Dialog</Dialog.Title>
-          <ScrollView>
+          <ScrollView f={1}>
             <YStack>
               <H2>LINE OF TEXT</H2>
               <Input placeholder="Type something..." />
