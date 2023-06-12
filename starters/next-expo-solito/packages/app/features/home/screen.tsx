@@ -1,8 +1,12 @@
 import {
   Anchor,
   Button,
+  Dialog,
   H1,
+  H2,
+  Input,
   Paragraph,
+  ScrollView,
   Separator,
   Sheet,
   useToastController,
@@ -12,6 +16,74 @@ import {
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 import React, { useState } from 'react'
 import { useLink } from 'solito/link'
+
+function DialogDemo() {
+  const [open, setOpen] = useState(false)
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog.Trigger asChild>
+        <Button>Open dialog</Button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay
+          key="overlay"
+          animation="quick"
+          opacity={0.5}
+          enterStyle={{ opacity: 0 }}
+          exitStyle={{ opacity: 0 }}
+        />
+
+        <Dialog.Content
+          bordered
+          elevate
+          key="content"
+          animation={[
+            'quick',
+            {
+              opacity: {
+                overshootClamping: true,
+              },
+            },
+          ]}
+          enterStyle={{ x: 0, y: -20, opacity: 0, scale: 0.9 }}
+          exitStyle={{ x: 0, y: 10, opacity: 0, scale: 0.95 }}
+          maxHeight={'90%'}
+          space
+        >
+          <Dialog.Title>Dialog</Dialog.Title>
+          <ScrollView>
+            <YStack>
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+              <H2>LINE OF TEXT</H2>
+              <Input placeholder="Type something..." />
+            </YStack>
+          </ScrollView>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog>
+  )
+}
 
 export function HomeScreen() {
   const linkProps = useLink({
@@ -44,6 +116,8 @@ export function HomeScreen() {
           </Anchor>
         </Paragraph>
       </YStack>
+
+      <DialogDemo />
 
       <XStack>
         <Button {...linkProps}>Link to user</Button>
